@@ -48,7 +48,7 @@ export const MapQuestion = ()=>{
                     {isCorrect? <p>Você acertou!</p>:""}
                     {isWrong? <p>Você errou!</p>:""}
                     <div className='DadosAD'>
-                        <p className='item'>Nome: {airdromeQuestionsContext.name}</p>
+                        <p className='item'>Nome:{airdromeQuestionsContext.name}</p>
                         <p className='item'>ICAO:{airdromeQuestionsContext.icao}</p>
                         <p className='item'>Tipo:{airdromeQuestionsContext.type}</p>                            
                     </div>
