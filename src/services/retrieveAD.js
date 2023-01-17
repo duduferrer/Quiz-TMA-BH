@@ -4,7 +4,7 @@ import { app } from "./firebaseConfig";
 
 const db = getFirestore(app)
 
-export default async function getData(){
+export default async function getAirdromesData(){
     let airdromes = await getDocs(collection(db, "airdromes"));
     let airdromesArray = []
     airdromes.forEach((ad) => {
