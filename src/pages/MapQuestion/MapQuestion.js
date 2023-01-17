@@ -50,7 +50,9 @@ export const MapQuestion = ()=>{
                     <div className='DadosAD'>
                         <p className='item'>Nome:{airdromeQuestionsContext.name}</p>
                         <p className='item'>ICAO:{airdromeQuestionsContext.icao}</p>
-                        <p className='item'>Tipo:{airdromeQuestionsContext.type}</p>                            
+                        <div id="continue">
+                            <button>Continuar</button>
+                        </div>                            
                     </div>
                 </div>:""}
         </div>
