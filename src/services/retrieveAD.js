@@ -8,7 +8,7 @@ export default async function getAirdromesData(){
     let airdromes = await getDocs(collection(db, "airdromes"));
     let airdromesArray = []
     airdromes.forEach((ad) => {
-        airdromesArray.push({id:ad.get('id'),
+        airdromesArray.push({id:ad.id,
                              name: ad.get('name'),
                              icao: ad.get('icao'),
                              ans_x: ad.get('ans_x'),

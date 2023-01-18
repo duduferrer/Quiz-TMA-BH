@@ -5,6 +5,7 @@ import App from './pages/App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import MapQuestion from './pages/MapQuestion/MapQuestion';
+import QuestionsManager from './pages/QuestionsManager/QuestionsManager';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,6 +15,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path='/quizAD' element={<MapQuestion/>}/>
+        <Route path="/gerenciar" element={<QuestionsManager/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -9,8 +9,10 @@ export default async function addAirdrome(name, icao, ans_x, ans_y){
             ans_x: ans_x,
             ans_y:  ans_y
         });
+        alert("Cadastro realizado")
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
         console.error("Error adding document: ", e);
+        alert("Erro no cadastro")
     }
 }
