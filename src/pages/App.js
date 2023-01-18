@@ -1,5 +1,5 @@
 import '../style/App.css';
-import {MapQuestion} from './MapQuestion/MapQuestion';
+import MapQuestion from './MapQuestion/MapQuestion';
 
 function App() {
   return (

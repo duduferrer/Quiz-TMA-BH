@@ -1,6 +1,24 @@
 body{
   background-color: #747cac;
+  margin: 0px
 }
+*{
+  margin: 0;
+}
+h3,h2{
+  color: antiquewhite;
+  max-width: 30vw;
+  height: 10vh;
+  text-align: center;
+}
+
+#howToPlay{
+  position: absolute;
+  top: 15%; 
+  left: 35vw;
+  text-align: center;
+}
+
 .img{
     position: relative;
     margin: auto;
@@ -10,11 +28,6 @@ body{
   
   #answer{
     position:absolute;
-    /* width: 30px;
-    height: 30px;
-    top: 697.92px;
-    left: 365.75px;
-    background-color: black; */
   }
   
   h1{

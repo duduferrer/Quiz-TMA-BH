@@ -13,7 +13,6 @@ export default async function getAirdromesData(){
                              icao: ad.get('icao'),
                              ans_x: ad.get('ans_x'),
                              ans_y: ad.get('ans_y')})
-                             console.log(airdromesArray)
     });
     return airdromesArray
 }
