@@ -28,7 +28,7 @@ export default function MapQuestion(){
         setIsOver(false)
         setScore(0)
         console.log('clicou')
-        localStorage.clear()
+        sessionStorage.clear()
         await getADArray()
         newQuestion()
         setBlock(false)
@@ -43,12 +43,12 @@ export default function MapQuestion(){
 
         async function getADArray(){ 
             let airdromesArray = await getAirdromesData()
-            localStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
+            sessionStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
         }
         
         
     function selectAD(){
-        let airdromesArray = (JSON.parse(localStorage.getItem('airdromesArray')))
+        let airdromesArray = (JSON.parse(sessionStorage.getItem('airdromesArray')))
         let total = airdromesArray.length
         if(total === 0){ 
             endGame()
@@ -70,16 +70,16 @@ export default function MapQuestion(){
                         setNameOrICAO(airdromesArray[i].icao)
                         break;
                     default: 
-                        1
+                        setNameOrICAO(airdromesArray[i].icao)
                 }
         }
     }
     function removeAlreadyAns(){
-        localStorage.setItem('correctAnswer', JSON.stringify(airdrome.id))
-        const valueToRemove = localStorage.getItem("correctAnswer")
-        let airdromesArray = (JSON.parse(localStorage.getItem('airdromesArray')))
+        sessionStorage.setItem('correctAnswer', JSON.stringify(airdrome.id))
+        const valueToRemove = sessionStorage.getItem("correctAnswer")
+        let airdromesArray = (JSON.parse(sessionStorage.getItem('airdromesArray')))
         airdromesArray = airdromesArray.filter(x=>'"'+x.id+'"' !== valueToRemove)
-        localStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
+        sessionStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
 
     }
 

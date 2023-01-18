@@ -1,15 +1,17 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {addUser, getUsers} from "../services/users";
 import { app } from "../services/firebaseConfig";
 
 const provider = new GoogleAuthProvider();
-
+//TODO CONSERTAR PROBLEMA DE REDIRECIONAMENTO AUTENTICADO
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({children})=>{
     const auth = getAuth(app);
     const [user, setUser] = useState()
+    const [isAdmin, setAdmin] = useState(false)
+    const [isManager, setManager] = useState(false)
     
     const signInGoogle = async()=>{
         signInWithPopup(auth, provider)
@@ -32,6 +34,10 @@ export const AuthProvider = ({children})=>{
                 await addUser(user.displayName, user.uid)
             }else{
                 console.log("Usuario ja existe")
+                setAdmin(usersArrayFiltered[0].admin);
+                setManager(usersArrayFiltered[0].manager)
+                console.log(isManager)
+                
             }
         }).catch((error) => {
             // Handle Errors here.
@@ -43,7 +49,7 @@ export const AuthProvider = ({children})=>{
         });
     }
     return(
-        <AuthContext.Provider value={{signInGoogle, signed: !!user}}>
+        <AuthContext.Provider value={{signInGoogle, signed: !!user, isAdmin: isAdmin, isManager: isManager}}>
             {children}
         </AuthContext.Provider>
     )

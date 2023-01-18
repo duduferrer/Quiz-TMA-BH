@@ -1,4 +1,4 @@
-import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore"; 
+import { collection, addDoc, getFirestore, getDocs, query, where } from "firebase/firestore"; 
 import { app } from "./firebaseConfig";
 
 
@@ -33,3 +33,17 @@ export async function getUsers(){
     });
     return usersArray
 }
+
+// export async function getUserByUID(uid){
+//     uid = 'EemOdiOfxAcq4Hya3HINy7WlMTp1'
+//     let users = ""
+//     let q = query(collection(db,"users"),where("uid", "==", uid)) 
+//     users = await getDocs(q)
+//     users.forEach((doc)=>
+//         console.log(doc.uid)
+//     )
+//     console.log(users[0].uid)
+    
+//     // await db.collection("users").where("uid", "==", uid).get()
+    
+// }
