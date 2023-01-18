@@ -11,8 +11,18 @@ h3,h2{
   height: 10vh;
   text-align: center;
 }
+#heading{
+  background-color: dimgrey;
+  position: absolute;
+  border-bottom-left-radius:50%;
+  border-bottom-right-radius:50%;
+  width: 49vw;
+  left: 26vw;
+  /* margin-right: auto; */
+  z-index: 4;
+}
 
-#howToPlay{
+.screenCover{
   position: absolute;
   top: 15%; 
   left: 35vw;
