@@ -19,7 +19,7 @@ export const MapQuestion = ()=>{
         alreadyAnswered: false 
     });
     
-    
+    //TODO criar funcao pra inicio de jogo, onde pega a lista do banco de dados e seleciona o primeiro ad
     async function getADArray(){ 
         let airdromesArray = await getAirdromesData()
         localStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
