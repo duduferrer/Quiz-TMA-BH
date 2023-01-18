@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import addAirdrome from '../../services/addAD';
+import {addAirdrome} from '../../services/airdromes';
 import '../Home/Home.css'
 
 function QuestionsManager() {
@@ -11,7 +10,7 @@ function QuestionsManager() {
   
   async function submitAirdrome(e){
     e.preventDefault();
-    if(name!=""){
+    if(name!==""){
       await addAirdrome(name, icao, ans_x, ans_y)
       clearForm();
     }else{alert("Preencha os dados")}

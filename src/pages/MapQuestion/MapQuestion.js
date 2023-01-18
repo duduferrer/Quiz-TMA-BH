@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import {useState } from 'react'
 import { Link } from 'react-router-dom';
 import map from '../../assets/images/13x16 sem legenda AD.png'
-import getAirdromesData from '../../services/retrieveAD';
-import Home from '../Home/Home';
+import {getAirdromesData} from '../../services/airdromes';
 import '../MapQuestion/MapQuestion.css'
 
 
@@ -51,7 +50,7 @@ export default function MapQuestion(){
     function selectAD(){
         let airdromesArray = (JSON.parse(localStorage.getItem('airdromesArray')))
         let total = airdromesArray.length
-        if(total == 0){ 
+        if(total === 0){ 
             endGame()
         }else{
             let i = Math.floor(Math.random()*total)
@@ -70,6 +69,8 @@ export default function MapQuestion(){
                     case 1:
                         setNameOrICAO(airdromesArray[i].icao)
                         break;
+                    default: 
+                        1
                 }
         }
     }

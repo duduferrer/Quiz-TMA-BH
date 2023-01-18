@@ -1,23 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style/index.css';
-import App from './pages/App';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import MapQuestion from './pages/MapQuestion/MapQuestion';
-import QuestionsManager from './pages/QuestionsManager/QuestionsManager';
+import { AuthProvider } from './contexts/AuthContext';
+import { AppRoutes } from './routes/routes';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path='/quizAD' element={<MapQuestion/>}/>
-        <Route path="/gerenciar" element={<QuestionsManager/>}/>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <AppRoutes/>
+    </AuthProvider>
   </React.StrictMode>
 );
 
