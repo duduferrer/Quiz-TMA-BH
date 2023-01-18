@@ -14,6 +14,7 @@ export default function MapQuestion(){
     const [isBlocked, setBlock] = useState(true)
     const [ansColor, setColor] = useState();
     const [nameOrICAO, setNameOrICAO] = useState();
+    const [score, setScore] = useState(0);
     const [airdrome, setAirdrome] = useState({
         id: 0,
         name: "",
@@ -79,12 +80,18 @@ export default function MapQuestion(){
         setCorrect(true);
         setWrong(false);
         setColor('green');
+        updateScore(50)
         localStorage.setItem('corretos', airdrome.id)
     }
     function wrongAns(){
         setWrong(true);
         setCorrect(false);
         setColor('red');
+        updateScore(-20)
+    }
+
+    function updateScore(pts){
+        setScore(score + pts)
     }
 
     
@@ -100,7 +107,10 @@ export default function MapQuestion(){
                     </div>
                 </div>:""
             }
-        <div><h1>Onde está o aeródromo {nameOrICAO}?</h1></div>
+        <div id='heading'>
+            <h1>Onde está o aeródromo {nameOrICAO}?</h1>
+            <p style={{textAlign: "center"}}>Pontos: {score}</p>
+        </div>
         <div className="img">
             <img src={map} className="map" alt="Video Mapa" onClick={wrongAns}/>
             <div id="answer" style={{   width:answerSize,
