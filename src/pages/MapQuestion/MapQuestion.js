@@ -120,8 +120,8 @@ export default function MapQuestion(){
     return(    
         <div className="app">
             {isOver?
-                <div style={{backgroundColor:'#000000cc', width: '100%', height:'100em', position: 'absolute', zIndex: 5, margin: 0}}>
-                    <div className='screenCover'>
+                <div className='screenCover'>
+                    <div className='coverText'>
                         <h2>Fim de Jogo!</h2>
                         <h3>Você quer voltar para página inicial ou jogar novamente?</h3>
                         <h3>Pontuação: {score}pts.</h3>
@@ -132,8 +132,8 @@ export default function MapQuestion(){
             }
                 
             {isBlocked?
-                <div style={{backgroundColor:'#000000cc', width: '100%', height:'100em', position: 'absolute', zIndex: 5, margin: 0}}>
-                    <div className='screenCover'>
+                <div className='screenCover'>
+                    <div className='coverText'>
                         <h2>Como jogar:</h2>
                         <h3>Você será perguntado sobre a localização dos principais aeródromos da terminal BH. Clique onde você acha que está o aeródromo. Caso você acerte, ganhará pontos! Caso erre, você pode tentar de novo!</h3>
                         <button onClick={newGame} style={{width: '20em', height:'3em', marginTop: 100}}>Jogar</button>
@@ -155,15 +155,17 @@ export default function MapQuestion(){
             onClick={correctAns}>    
             </div>
             {isCorrect|isWrong ?  
-                <div className="result" style={{}}>
-                    {isCorrect? <p>Você acertou!</p>:""}
-                    {isWrong? <p>Você errou!</p>:""}
-                    <div className='DadosAD'>
-                        <p className='item'>Nome:{airdrome.name}</p>
-                        <p className='item'>ICAO:{airdrome.icao}</p>
-                        <div id="continue">
-                            <button onClick={newQuestion}>Continuar</button>
-                        </div>                            
+                <div className="screenCover" style={{backgroundColor:'#00000022'}}>
+                    <div className='result'>
+                        {isCorrect? <h2>Você acertou!</h2>:""}
+                        {isWrong? <h2>Quase!</h2>:""}
+                        <div className='DadosAD'>
+                            <p className='item'>Nome:{airdrome.name}</p>
+                            <p className='item'>ICAO:{airdrome.icao}</p>
+                            <div id="continue">
+                                <button onClick={newQuestion}>Continuar</button>
+                            </div>                            
+                        </div>
                     </div>
                 </div>:""}
         </div>
