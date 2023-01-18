@@ -3,6 +3,9 @@ import map from '../../assets/images/13x16 sem legenda AD.png'
 import getAirdromesData from '../../services/retrieveAD';
 import '../MapQuestion/MapQuestion.css'
 
+//TODO Prevenir que repita AD
+//TODO Adicionar esquema de pontuação
+//TODO Adicionar fim de jogo
 
 export default function MapQuestion(){
     const answerSize = 30;
@@ -33,10 +36,6 @@ export default function MapQuestion(){
             setWrong(false);
             setColor("");
             selectAD()
-        }
-    
-        function whatQues(){
-            
         }
 
         async function getADArray(){ 
@@ -80,7 +79,7 @@ export default function MapQuestion(){
         setCorrect(true);
         setWrong(false);
         setColor('green');
-        setAirdrome(airdrome => ({...airdrome, alreadyAnswered: true}))
+        localStorage.setItem('corretos', airdrome.id)
     }
     function wrongAns(){
         setWrong(true);
