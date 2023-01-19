@@ -27,4 +27,29 @@
     font-size: 3vw;
     text-align: center;
     align-items: center;
+    display: flex;
+    background-color: #909090bb;
+    
+}
+.pos{
+    margin-left: 1vw;
+    text-align: center;
+}
+.name{
+    margin-left: auto;
+    width: 20vw;
+    text-align: center;
+}
+.pts{
+    margin-left: 17vw;
+    width: 15vw;
+    text-align: right;
+}
+h1{
+    margin-top: 5vh;
+}
+.heading{
+    display: flex;
+    position: absolute;
+
 }

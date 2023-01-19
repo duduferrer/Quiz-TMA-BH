@@ -6,13 +6,18 @@ import "./Ranking.css"
 
 function Ranking() {
     const [arrayRanking, setArrayRanking] = useState([{}]);
+    const [isLoaded, setIsLoaded] = useState(false)
     let pos = 0
     function position(){
         return pos + 1 
     }
     useEffect( () => {
-        setArrayRanking(JSON.parse(sessionStorage.getItem("ranking")))
-        
+      async function waitData(){
+        await viewRanking()
+        await setArrayRanking(JSON.parse(sessionStorage.getItem("ranking")))
+        setIsLoaded(true)
+      }
+      waitData();
     }, [sessionStorage.getItem("ranking")]);
 
     
@@ -20,13 +25,18 @@ function Ranking() {
     return (
       <div className="Ranking">
         <h1> Ranking de Pontuação: </h1>
+        {/* <div className="heading">
+        <div className="pos">#</div>
+        <div className="name">Nome</div>
+        <div className="pts">Pontos</div>
+        </div> */}
         <div id={"ranking"}>    
-        {
+        {isLoaded ? (
             arrayRanking.map((item, index)=>
             <p key={index} id={"rk"+(index+1)}className={"rkItems"}>
-                {index+1}.&ensp;{item.name}&emsp;{item.score}    
+                <div className="pos">{index+1}.</div><div className="name">{item.name}</div><div className="pts">{item.score}</div>    
             </p>
-            )
+            )):<p>Carregando dados...</p>
         
         }
         </div>
