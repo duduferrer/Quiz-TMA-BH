@@ -12,6 +12,7 @@ function Home() {
       </div>
       <div><h1>Selecione o modo:</h1></div>
         <button><Link to={'/quizAD'} className={"link"}>Quiz Aeródromos</Link></button>
+        <button>Ranking</button>
       </div>
   );
 }
