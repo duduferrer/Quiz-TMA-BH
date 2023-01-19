@@ -12,6 +12,11 @@ export const AuthProvider = ({children})=>{
     const [user, setUser] = useState()
     const [isAdmin, setAdmin] = useState(false)
     const [isManager, setManager] = useState(false)
+   
+    async function setCredentials(DBAdmin, DBManager){
+        await setAdmin(DBAdmin)
+        await setManager(DBManager)
+    }
     
     const signInGoogle = async()=>{
         signInWithPopup(auth, provider)
@@ -34,10 +39,7 @@ export const AuthProvider = ({children})=>{
                 await addUser(user.displayName, user.uid)
             }else{
                 console.log("Usuario ja existe")
-                setAdmin(usersArrayFiltered[0].admin);
-                setManager(usersArrayFiltered[0].manager)
-                console.log(isManager)
-                
+                await setCredentials(usersArrayFiltered[0].admin, usersArrayFiltered[0].manager)                
             }
         }).catch((error) => {
             // Handle Errors here.

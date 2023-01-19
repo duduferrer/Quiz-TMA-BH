@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext} from "../../contexts/AuthContext";
 
@@ -6,13 +6,20 @@ import { AuthContext} from "../../contexts/AuthContext";
 
 
 function Login() {
-    const {signInGoogle} = useContext(AuthContext)
+    const {signInGoogle, isManager} = useContext(AuthContext)
     const uid = 'EemOdiOfxAcq4Hya3HINy7WlMTp1';
     const navigate = useNavigate();
     
+    useEffect(()=>{
+      if(isManager){
+        navigate('/gerenciar')   
+      }
+
+  },[isManager])
+
+
     async function handleClick(){
-      await signInGoogle();
-      navigate('/gerenciar')
+      signInGoogle()
     }
 
   return (
