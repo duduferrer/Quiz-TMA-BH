@@ -1,0 +1,30 @@
+#ranking{
+    text-align: center;
+    margin-top: 20vh;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+#rk1{
+    background-color: gold;
+    height: 9vw;
+    font-size: 7vw;
+    font-weight: bold;
+}
+#rk2{
+    background-color: silver;
+    height: 7vw;
+    font-size: 5vw;
+    font-weight: bold;
+}
+#rk3{
+    background-color: #cd7f32;
+    height: 5vw;
+    font-size: 4vw;
+    font-weight: bold;
+}
+.rkItems{
+    font-size: 3vw;
+    text-align: center;
+    align-items: center;
+}

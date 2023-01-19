@@ -3,6 +3,7 @@ import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
 import MapQuestion from "../pages/MapQuestion/MapQuestion"
 import QuestionsManager from "../pages/QuestionsManager/QuestionsManager"
+import Ranking from "../pages/Ranking/Ranking"
 import { PrivateRoutes } from "./privateRoutes"
 
 
@@ -13,6 +14,7 @@ export const AppRoutes = ()=>{
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path='/quizAD' element={<MapQuestion/>}/>
+                <Route path="/ranking" element={<Ranking/>}/>
                 <Route path="/gerenciar" element={<PrivateRoutes/>}>
                     <Route path="/gerenciar" element={<QuestionsManager/>}/>
                 </Route>

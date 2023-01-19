@@ -12,6 +12,8 @@ export async function submitRank(name, score) {
 export async function viewRanking(){
     let scoresArray = await getScores();
     scoresArray = scoresArray.sort(_sortByScore)
+    sessionStorage.setItem("ranking", JSON.stringify(scoresArray))
+    console.log(scoresArray)
     return scoresArray
 
 }
