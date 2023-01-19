@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import {useState } from 'react'
 import { Link } from 'react-router-dom';
 import map from '../../assets/images/13x16 sem legenda AD.png'
-import getAirdromesData from '../../services/retrieveAD';
-import Home from '../Home/Home';
+import {getAirdromesData} from '../../services/airdromes';
 import '../MapQuestion/MapQuestion.css'
 
 
@@ -29,7 +28,7 @@ export default function MapQuestion(){
         setIsOver(false)
         setScore(0)
         console.log('clicou')
-        localStorage.clear()
+        sessionStorage.clear()
         await getADArray()
         newQuestion()
         setBlock(false)
@@ -44,14 +43,14 @@ export default function MapQuestion(){
 
         async function getADArray(){ 
             let airdromesArray = await getAirdromesData()
-            localStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
+            sessionStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
         }
         
         
     function selectAD(){
-        let airdromesArray = (JSON.parse(localStorage.getItem('airdromesArray')))
+        let airdromesArray = (JSON.parse(sessionStorage.getItem('airdromesArray')))
         let total = airdromesArray.length
-        if(total == 0){ 
+        if(total === 0){ 
             endGame()
         }else{
             let i = Math.floor(Math.random()*total)
@@ -70,15 +69,17 @@ export default function MapQuestion(){
                     case 1:
                         setNameOrICAO(airdromesArray[i].icao)
                         break;
+                    default: 
+                        setNameOrICAO(airdromesArray[i].icao)
                 }
         }
     }
     function removeAlreadyAns(){
-        localStorage.setItem('correctAnswer', JSON.stringify(airdrome.id))
-        const valueToRemove = localStorage.getItem("correctAnswer")
-        let airdromesArray = (JSON.parse(localStorage.getItem('airdromesArray')))
+        sessionStorage.setItem('correctAnswer', JSON.stringify(airdrome.id))
+        const valueToRemove = sessionStorage.getItem("correctAnswer")
+        let airdromesArray = (JSON.parse(sessionStorage.getItem('airdromesArray')))
         airdromesArray = airdromesArray.filter(x=>'"'+x.id+'"' !== valueToRemove)
-        localStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
+        sessionStorage.setItem('airdromesArray', JSON.stringify(airdromesArray))
 
     }
 
