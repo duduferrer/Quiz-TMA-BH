@@ -26,7 +26,6 @@ function Login() {
     <div className="Login">
       <div><h1>Login</h1></div>
         <button onClick={handleClick}>Login</button>
-        <button onClick={()=>{}}>Teste</button>
       </div>
   );
 }
