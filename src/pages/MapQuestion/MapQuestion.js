@@ -1,6 +1,7 @@
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import map from '../../assets/images/13x16 sem legenda AD.png'
+import { submitRank } from '../../components/Ranking';
 import {getAirdromesData} from '../../services/airdromes';
 import '../MapQuestion/MapQuestion.css'
 
@@ -13,7 +14,13 @@ export default function MapQuestion(){
     const [ansColor, setColor] = useState();
     const [nameOrICAO, setNameOrICAO] = useState();
     const [score, setScore] = useState(0);
+    const [name, setName] = useState()
+    const [submited, setSubmited] = useState(false)
     const [isOver, setIsOver] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [arrayRanking, setArrayRanking] = useState([{}])
+    const [width, setWidth] = useState(window.screen.width)
+    const [height, setHeight] = useState(window.screen.height)
     const [airdrome, setAirdrome] = useState({
         id: 0,
         name: "",
@@ -22,12 +29,12 @@ export default function MapQuestion(){
         ans_y: 0,
         alreadyAnswered: false 
     });
+
     
 
     async function newGame(){
         setIsOver(false)
         setScore(0)
-        console.log('clicou')
         sessionStorage.clear()
         await getADArray()
         newQuestion()
@@ -117,27 +124,60 @@ export default function MapQuestion(){
         }
     }
 
-    
+    async function submitScore(){
+        await submitRank(name, score);
+        await setArrayRanking(JSON.parse(sessionStorage.getItem("your_ranking")))
+        await setSubmited(true);
+        await setIsLoaded(true)
+
+    }
+
     return(    
         <div className="app">
+            {console.log(arrayRanking, isLoaded, submited)}
+            <meta name="viewport" content="minimum-scale=1"/>
             {isOver?
-                <div className='screenCover'>
+                <div className='screenCover' style={{height:height, width:width}}>
+                    {console.log(arrayRanking, isLoaded, submited)}
                     <div className='coverText'>
                         <h2>Fim de Jogo!</h2>
-                        <h3>Você quer voltar para página inicial ou jogar novamente?</h3>
+                        <h3>Entre para o Ranking!</h3>
                         <h3>Pontuação: {score}pts.</h3>
-                        <button onClick={newGame} style={{width: '20em', height:'3em', marginTop: 100}}>Jogar Novamente</button>
-                        <button style={{width: '20em', height:'3em', marginTop: 100}}><Link to={'/'}>Voltar para o Menu</Link></button>
+                        {submited ? 
+                        arrayRanking &&(
+                        <div className='rkContainer'>
+                        {isLoaded ? (
+                            arrayRanking.map((item, index)=>
+                                <div key={index} id={"persRk"+(index)}className={"persRkItems"}>
+                                    <p className="persPos">{item.position}.</p><p className="persName">{item.name}</p><p className="persPts">{item.score}</p>    
+                                </div>
+                            )):<p>Carregando dados...</p>
+        
+                        }
+                        </div>)
+                        :
+                        <div className='coverText' id='regRk'>
+                            <input id="inNome" type={"text"} maxLength={3} onChange={(e)=>setName(e.target.value)} placeholder="Nome"/>
+                            <button id="btEntrar" onClick={()=>submitScore()} style={{width: '20em', height:'3em', marginTop:'5vh'}}>OK</button>
+                        </div>
+                        }
+                        
+                        <div id='menu' className='coverText'>
+                        <button id='playAgain' onClick={newGame} style={{width: '20em', height:'3em', marginTop: '5vh'}}>Jogar Novamente</button>
+                        <button style={{width: '20em', height:'3em', marginTop: '2vh'}}><Link to={'/'}>Voltar para o Menu</Link></button>
+                        </div>
                     </div>
                 </div>:""
             }
                 
             {isBlocked?
-                <div className='screenCover'>
+                <div className='screenCover'style={{ height:height, width:width}}>
                     <div className='coverText'>
                         <h2>Como jogar:</h2>
                         <h3>Você será perguntado sobre a localização dos principais aeródromos da terminal BH. Clique onde você acha que está o aeródromo. Caso você acerte, ganhará pontos! Caso erre, você pode tentar de novo!</h3>
-                        <button onClick={newGame} style={{width: '20em', height:'3em', marginTop: 100}}>Jogar</button>
+                    </div>
+                    <div>
+                        <button style={{margin:"0 auto"}} className='button' onClick={newGame}>Jogar</button>
                     </div>
                 </div>:""
             }
@@ -156,7 +196,7 @@ export default function MapQuestion(){
             onClick={correctAns}>    
             </div>
             {isCorrect|isWrong ?  
-                <div className="screenCover" style={{backgroundColor:'#00000022'}}>
+                <div className="screenCover" style={{backgroundColor:'#00000022', height:height, width:width}}>
                     <div className='result'>
                         {isCorrect? <h2>Você acertou!</h2>:""}
                         {isWrong? <h2>Quase!</h2>:""}

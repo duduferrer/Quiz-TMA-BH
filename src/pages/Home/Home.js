@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { viewRanking } from '../../components/Ranking';
 import '../Home/Home.css'
 
+
+//TODO criar menu fixo para navegacao
 function Home() {
 
   return (

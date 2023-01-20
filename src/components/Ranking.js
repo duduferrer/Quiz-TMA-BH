@@ -5,8 +5,9 @@ import { addScore, getScores } from "../services/ranking";
 
 export async function submitRank(name, score) {
     const idLastScore= await addScore(name, score)
-    const posArray = viewYourPosition(idLastScore)
-    return posArray
+    const posArray = await viewYourPosition(idLastScore)
+    sessionStorage.setItem("your_ranking", JSON.stringify(posArray))
+    return idLastScore
 }
 
 export async function viewRanking(){
@@ -30,8 +31,10 @@ export async function viewTop10(){
 
 export async function viewYourPosition(idLS){
     let scoresArray = await getScores()
+    scoresArray = scoresArray.sort(_sortByScore)    
     console.log(scoresArray)
-    scoresArray = scoresArray.sort(_sortByScore)
+    scoresArray = scoresArray.map((obj,index) => ({ ...obj, position: index+1}))
+    console.log(scoresArray)
     let scoreIndex = scoresArray.findIndex(item => item.id === idLS)
     let scoreFiltered = scoresArray.filter((x,i)=> (i===scoreIndex)||(i>scoreIndex && i<=scoreIndex+2)||(i<scoreIndex && i>=scoreIndex-2))
     return scoreFiltered
