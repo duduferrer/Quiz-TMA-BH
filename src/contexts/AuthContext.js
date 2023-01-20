@@ -4,7 +4,7 @@ import {addUser, getUsers} from "../services/users";
 import { app } from "../services/firebaseConfig";
 
 const provider = new GoogleAuthProvider();
-//TODO CONSERTAR PROBLEMA DE REDIRECIONAMENTO AUTENTICADO
+
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({children})=>{

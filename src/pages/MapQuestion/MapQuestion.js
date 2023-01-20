@@ -164,7 +164,7 @@ export default function MapQuestion(){
                         
                         <div id='menu' className='coverText'>
                         <button id='playAgain' onClick={newGame} style={{width: '20em', height:'3em', marginTop: '5vh'}}>Jogar Novamente</button>
-                        <button style={{width: '20em', height:'3em', marginTop: '2vh'}}><Link to={'/'}>Voltar para o Menu</Link></button>
+                        <button style={{width: '20em', height:'3em', marginTop: '2vh'}}><Link to={'/'} className={'link'}>Voltar para o Menu</Link></button>
                         </div>
                     </div>
                 </div>:""
