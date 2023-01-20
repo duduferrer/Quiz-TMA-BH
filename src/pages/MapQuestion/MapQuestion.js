@@ -22,6 +22,7 @@ export default function MapQuestion(){
     const [arrayRanking, setArrayRanking] = useState([{}])
     const [width, setWidth] = useState(window.screen.width)
     const [height, setHeight] = useState(window.screen.height)
+    const [indFiltArray, setIndex] = useState()
     const [airdrome, setAirdrome] = useState({
         id: 0,
         name: "",
@@ -39,6 +40,8 @@ export default function MapQuestion(){
         sessionStorage.clear()
         await getADArray()
         newQuestion()
+        setSubmited(false);
+        setIsLoaded(false)
         setBlock(false)
     }
         
@@ -126,7 +129,7 @@ export default function MapQuestion(){
     }
 
     async function submitScore(){
-        await submitRank(name, score);
+        setIndex(await submitRank(name, score));
         await setArrayRanking(JSON.parse(sessionStorage.getItem("your_ranking")))
         await setSubmited(true);
         await setIsLoaded(true)
@@ -149,7 +152,7 @@ export default function MapQuestion(){
                         <div className='rkContainer'>
                         {isLoaded ? (
                             arrayRanking.map((item, index)=>
-                                <div key={index} id={"persRk"+(index)}className={"persRkItems"}>
+                                <div key={index} id={"persRk"+(index)}className={"persRkItems" + " " + item.isPlayer}>
                                     <p className="persPos">{item.position}.</p><p className="persName">{item.name}</p><p className="persPts">{item.score}</p>    
                                 </div>
                             )):<p>Carregando dados...</p>

@@ -117,7 +117,7 @@ h3,h2{
   text-align: center;
 }
 
-#persRk2{
+.persRkItems.isPlayer{
   background-color: whitesmoke;
 }
 .persRkItems{
