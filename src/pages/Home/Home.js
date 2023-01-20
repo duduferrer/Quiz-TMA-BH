@@ -9,13 +9,15 @@ function Home() {
   return (
     <div className="Home">
       <div className='menu'>
-        <ul>
-          <li><Link to={'/login'} className={"link"}>Painel de Controle</Link></li>
-        </ul>
+          <Link to={'/login'} className={"link"} id='controlPanel'>Painel de Controle</Link>
       </div>
-      <div><h1>Selecione o modo:</h1></div>
-        <button><Link to={'/quizAD'} className={"link"}>Quiz Aeródromos</Link></button>
-        <button onClick={viewRanking}><Link to={'/ranking'} className={"link"}>Ranking</Link></button>
+      <div id='menuBody'>
+      <div><h1 id='menuText'>Menu</h1></div>
+        <div id='buttonsMenu'>
+          <button className='button' id='buttonQuiz'><Link to={'/quizAD'} className={"link"}>Quiz Aeródromos</Link></button>
+          <button className='button'onClick={viewRanking}id='buttonRk'><Link to={'/ranking'} className={"link"}>Ranking</Link></button>
+        </div>
+      </div>
       </div>
   );
 }

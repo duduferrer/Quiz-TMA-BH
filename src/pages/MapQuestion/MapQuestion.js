@@ -4,6 +4,7 @@ import map from '../../assets/images/13x16 sem legenda AD.png'
 import { submitRank } from '../../components/Ranking';
 import {getAirdromesData} from '../../services/airdromes';
 import '../MapQuestion/MapQuestion.css'
+import { Menu } from '../../components/Menu/Menu';
 
 
 export default function MapQuestion(){
@@ -134,11 +135,11 @@ export default function MapQuestion(){
 
     return(    
         <div className="app">
-            {console.log(arrayRanking, isLoaded, submited)}
+            <Menu/>
             <meta name="viewport" content="minimum-scale=1"/>
             {isOver?
                 <div className='screenCover' style={{height:height, width:width}}>
-                    {console.log(arrayRanking, isLoaded, submited)}
+
                     <div className='coverText'>
                         <h2>Fim de Jogo!</h2>
                         <h3>Entre para o Ranking!</h3>

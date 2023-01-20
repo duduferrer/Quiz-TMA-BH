@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {addAirdrome} from '../../services/airdromes';
 import '../Home/Home.css'
+import { Menu } from '../../components/Menu/Menu';
 
 function QuestionsManager() {
   const [name, setName] = useState('')
@@ -25,6 +26,7 @@ function QuestionsManager() {
 
   return (
     <div className="Manager">
+      <Menu/>
       <div><h1>Inserção de aeródromo </h1></div>
       <div>
         <p>Para inserir um aeródromo, você precisa de 3 informações: <br/> 

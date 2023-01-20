@@ -11,8 +11,49 @@ ul{
     float: right;
 
 }
+#controlPanel{
+    display: flex;
+    margin-left: auto;
+
+}
+.menu{
+    display: flex;
+    margin-left: auto;
+
+}
 
 .link{
     text-decoration: none;
     color: black;
+}
+
+#buttonsMenu{
+    position: relative;
+    display:inline;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+#menuBody{
+    margin: auto;
+    position: relative;
+    width: 100%
+
+}
+#buttonQuiz{
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+#buttonRk{
+    margin: 0 auto;
+
+}
+
+#menuText{
+    display: block;
+    margin: 10px auto;
 }

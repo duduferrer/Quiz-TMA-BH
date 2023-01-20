@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { viewRanking } from "../../components/Ranking";
 import "./Ranking.css"
+import { Menu } from '../../components/Menu/Menu';
 
 
 function Ranking() {
@@ -24,12 +25,8 @@ function Ranking() {
     
     return (
       <div className="Ranking">
+        <Menu/>
         <h1> Ranking de Pontuação: </h1>
-        {/* <div className="heading">
-        <div className="pos">#</div>
-        <div className="name">Nome</div>
-        <div className="pts">Pontos</div>
-        </div> */}
         <div id={"ranking"}>    
         {isLoaded ? (
             arrayRanking.map((item, index)=>
