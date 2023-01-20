@@ -23,6 +23,7 @@ export default function MapQuestion(){
     const [width, setWidth] = useState(window.screen.width)
     const [height, setHeight] = useState(window.screen.height)
     const [indFiltArray, setIndex] = useState()
+    const [multi, setMulti] = useState(1)
     const [airdrome, setAirdrome] = useState({
         id: 0,
         name: "",
@@ -110,6 +111,7 @@ export default function MapQuestion(){
         setCorrect(true);
         setWrong(false);
         setColor('green');
+        setMulti(multi+0.2)
         updateScore(50)
         removeAlreadyAns()
     }
@@ -117,14 +119,15 @@ export default function MapQuestion(){
         setWrong(true);
         setCorrect(false);
         setColor('red');
-        updateScore(-10)
+        setMulti(1)
+        updateScore(-20)
     }
 
     function updateScore(pts){
         if(score+pts<0){
 
         }else{
-            setScore(score + pts)
+            setScore(score + pts * multi)
         }
     }
 
