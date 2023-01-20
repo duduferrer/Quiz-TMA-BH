@@ -21,6 +21,7 @@ h3,h2{
 }
 #inNome{
   position: relative;
+  display: inline;
   text-align: center;
   height: 7vh;
   margin: 0 auto;

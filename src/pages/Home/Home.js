@@ -14,8 +14,8 @@ function Home() {
       <div id='menuBody'>
       <div><h1 id='menuText'>Menu</h1></div>
         <div id='buttonsMenu'>
-          <button className='button' id='buttonQuiz'><Link to={'/quizAD'} className={"link"}>Quiz Aeródromos</Link></button>
-          <button className='button'onClick={viewRanking}id='buttonRk'><Link to={'/ranking'} className={"link"}>Ranking</Link></button>
+          <Link to={'/quizAD'} className={"link"}><button className='button' id='buttonQuiz'>Quiz Aeródromos</button></Link>
+          <Link to={'/ranking'} className={"link"}><button className='button'onClick={viewRanking}id='buttonRk'>Ranking</button></Link>
         </div>
       </div>
       </div>
