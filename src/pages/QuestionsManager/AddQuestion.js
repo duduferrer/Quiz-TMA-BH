@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import {addAirdrome} from '../../services/airdromes';
-import '../Home/Home.css'
 import { Menu } from '../../components/Menu/Menu';
 
-function QuestionsManager() {
+function AddQuestion() {
   const [name, setName] = useState('')
   const [icao, setIcao] = useState('')
   const [ans_x, setAns_x] = useState('')
@@ -50,4 +49,4 @@ function QuestionsManager() {
   );
 }
 
-export default QuestionsManager;
+export default AddQuestion;

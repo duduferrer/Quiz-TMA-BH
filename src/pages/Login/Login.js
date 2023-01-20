@@ -7,12 +7,11 @@ import { Menu } from '../../components/Menu/Menu';
 
 function Login() {
     const {signInGoogle, isManager} = useContext(AuthContext)
-    const uid = 'EemOdiOfxAcq4Hya3HINy7WlMTp1';
     const navigate = useNavigate();
     
     useEffect(()=>{
       if(isManager){
-        navigate('/gerenciar')   
+        navigate('/addquestion')   
       }
 
   },[isManager])
